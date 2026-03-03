@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Dimensions, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuthStore } from '../src/stores/authStore';
@@ -76,22 +76,26 @@ export default function Welcome() {
       
       {/* Action buttons */}
       <View style={styles.actions}>
-        <TouchableOpacity
-          style={styles.primaryBtn}
+        <Pressable
+          style={({ pressed }) => [
+            styles.primaryBtn,
+            pressed && styles.primaryBtnPressed
+          ]}
           onPress={() => router.push('/auth/register')}
-          activeOpacity={0.8}
         >
           <Text style={styles.primaryBtnText}>Başla</Text>
           <Ionicons name="arrow-forward" size={20} color={colors.white} />
-        </TouchableOpacity>
+        </Pressable>
         
-        <TouchableOpacity
-          style={styles.secondaryBtn}
+        <Pressable
+          style={({ pressed }) => [
+            styles.secondaryBtn,
+            pressed && styles.secondaryBtnPressed
+          ]}
           onPress={() => router.push('/auth/login')}
-          activeOpacity={0.8}
         >
           <Text style={styles.secondaryBtnText}>Zaten hesabım var</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );
@@ -208,6 +212,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingVertical: 16,
     marginBottom: 12,
+    cursor: 'pointer',
+  },
+  primaryBtnPressed: {
+    opacity: 0.8,
+    transform: [{ scale: 0.98 }],
   },
   primaryBtnText: {
     fontSize: 17,
@@ -218,6 +227,10 @@ const styles = StyleSheet.create({
   secondaryBtn: {
     alignItems: 'center',
     paddingVertical: 16,
+    cursor: 'pointer',
+  },
+  secondaryBtnPressed: {
+    opacity: 0.7,
   },
   secondaryBtnText: {
     fontSize: 15,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -84,16 +84,16 @@ export default function Subjects() {
 
         {/* Filter tabs */}
         <View style={styles.filterContainer}>
-          <TouchableOpacity
+          <Pressable
             style={[styles.filterBtn, !selectedSubject && styles.filterBtnActive]}
             onPress={() => setSelectedSubject(null)}
           >
             <Text style={[styles.filterText, !selectedSubject && styles.filterTextActive]}>
               Tümü
             </Text>
-          </TouchableOpacity>
+          </Pressable>
           {subjects.map((subject) => (
-            <TouchableOpacity
+            <Pressable
               key={subject.id}
               style={[
                 styles.filterBtn,
@@ -110,7 +110,7 @@ export default function Subjects() {
               ]}>
                 {subject.name_tr}
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           ))}
         </View>
 

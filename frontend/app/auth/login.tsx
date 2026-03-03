@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
@@ -51,9 +51,9 @@ export default function Login() {
       >
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
+          <Pressable style={styles.backBtn} onPress={() => router.back()}>
             <Ionicons name="close" size={24} color={colors.text} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         {/* Content */}
@@ -96,17 +96,17 @@ export default function Login() {
                   secureTextEntry={!showPassword}
                   autoCapitalize="none"
                 />
-                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Pressable onPress={() => setShowPassword(!showPassword)}>
                   <Ionicons
                     name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                     size={20}
                     color={colors.textMuted}
                   />
-                </TouchableOpacity>
+                </Pressable>
               </View>
             </View>
 
-            <TouchableOpacity
+            <Pressable
               style={[styles.loginBtn, loading && styles.loginBtnDisabled]}
               onPress={handleLogin}
               disabled={loading}
@@ -116,15 +116,15 @@ export default function Login() {
               ) : (
                 <Text style={styles.loginBtnText}>Giriş Yap</Text>
               )}
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           {/* Register link */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>Hesabın yok mu? </Text>
-            <TouchableOpacity onPress={() => router.replace('/auth/register')}>
+            <Pressable onPress={() => router.replace('/auth/register')}>
               <Text style={styles.footerLink}>Kayıt ol</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </KeyboardAvoidingView>

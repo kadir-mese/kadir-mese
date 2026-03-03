@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Platform } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { colors } from '../utils/colors';
 
@@ -67,7 +67,7 @@ export const ParameterSelect: React.FC<ParameterSelectProps> = ({
       <Text style={styles.label}>{label}</Text>
       <View style={styles.optionsRow}>
         {options.map((opt) => (
-          <TouchableOpacity
+          <Pressable
             key={opt.value}
             style={[
               styles.option,
@@ -83,7 +83,7 @@ export const ParameterSelect: React.FC<ParameterSelectProps> = ({
             >
               {opt.label}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </View>
     </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../utils/colors';
 
@@ -45,10 +45,10 @@ const getTypeColor = (type: string) => {
 
 export const SimulationCard: React.FC<SimulationCardProps> = ({ simulation, completed, onPress }) => {
   return (
-    <TouchableOpacity
+    <Pressable
       style={styles.card}
       onPress={onPress}
-      activeOpacity={0.8}
+      
     >
       <View style={styles.header}>
         <View style={[styles.typeIndicator, { backgroundColor: getTypeColor(simulation.type) }]} />
@@ -75,7 +75,7 @@ export const SimulationCard: React.FC<SimulationCardProps> = ({ simulation, comp
         <Text style={styles.startText}>Simülasyonu Başlat</Text>
         <Ionicons name="arrow-forward" size={18} color={colors.primary} />
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

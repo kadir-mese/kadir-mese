@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
 import Svg, { Circle, Ellipse, Line, Text as SvgText, G, Path } from 'react-native-svg';
 import { colors } from '../../utils/colors';
 

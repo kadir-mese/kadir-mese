@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -39,18 +39,18 @@ export default function Profile() {
           <Text style={styles.authText}>
             İlerlemenizi kaydetmek ve tüm özelliklere erişmek için giriş yapın.
           </Text>
-          <TouchableOpacity
+          <Pressable
             style={styles.authBtn}
             onPress={() => router.push('/auth/login')}
           >
             <Text style={styles.authBtnText}>Giriş Yap</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
+          </Pressable>
+          <Pressable
             style={styles.registerLink}
             onPress={() => router.push('/auth/register')}
           >
             <Text style={styles.registerLinkText}>Hesabın yok mu? Kayıt ol</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </SafeAreaView>
     );
@@ -106,44 +106,44 @@ export default function Profile() {
         <View style={styles.menuSection}>
           <Text style={styles.menuTitle}>Ayarlar</Text>
           
-          <TouchableOpacity style={styles.menuItem}>
+          <Pressable style={styles.menuItem}>
             <View style={[styles.menuIcon, { backgroundColor: colors.primary + '20' }]}>
               <Ionicons name="person-outline" size={20} color={colors.primary} />
             </View>
             <Text style={styles.menuText}>Profili Düzenle</Text>
             <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-          </TouchableOpacity>
+          </Pressable>
           
-          <TouchableOpacity style={styles.menuItem}>
+          <Pressable style={styles.menuItem}>
             <View style={[styles.menuIcon, { backgroundColor: colors.warning + '20' }]}>
               <Ionicons name="notifications-outline" size={20} color={colors.warning} />
             </View>
             <Text style={styles.menuText}>Bildirimler</Text>
             <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-          </TouchableOpacity>
+          </Pressable>
           
-          <TouchableOpacity style={styles.menuItem}>
+          <Pressable style={styles.menuItem}>
             <View style={[styles.menuIcon, { backgroundColor: colors.biology + '20' }]}>
               <Ionicons name="help-circle-outline" size={20} color={colors.biology} />
             </View>
             <Text style={styles.menuText}>Yardım & Destek</Text>
             <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-          </TouchableOpacity>
+          </Pressable>
           
-          <TouchableOpacity style={styles.menuItem}>
+          <Pressable style={styles.menuItem}>
             <View style={[styles.menuIcon, { backgroundColor: colors.chemistry + '20' }]}>
               <Ionicons name="information-circle-outline" size={20} color={colors.chemistry} />
             </View>
             <Text style={styles.menuText}>Hakkında</Text>
             <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         {/* Logout */}
-        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
+        <Pressable style={styles.logoutBtn} onPress={handleLogout}>
           <Ionicons name="log-out-outline" size={20} color={colors.error} />
           <Text style={styles.logoutText}>Çıkış Yap</Text>
-        </TouchableOpacity>
+        </Pressable>
 
         <View style={{ height: 40 }} />
       </ScrollView>

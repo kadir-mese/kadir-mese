@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
 import Svg, { Circle, Ellipse, Line, Text as SvgText, G, Rect } from 'react-native-svg';
 import { colors } from '../../utils/colors';
 
@@ -189,7 +189,7 @@ export const MitosisSimulation: React.FC<MitosisSimulationProps> = ({ speed, pha
       {/* Phase selector */}
       <View style={styles.phaseSelector}>
         {PHASES.map((p, index) => (
-          <TouchableOpacity
+          <Pressable
             key={p.id}
             style={[
               styles.phaseBtn,
@@ -203,19 +203,19 @@ export const MitosisSimulation: React.FC<MitosisSimulationProps> = ({ speed, pha
             ]}>
               {index + 1}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         ))}
       </View>
       
       {/* Play button */}
-      <TouchableOpacity
+      <Pressable
         style={[styles.playBtn, isPlaying && styles.playBtnActive]}
         onPress={() => setIsPlaying(!isPlaying)}
       >
         <Text style={styles.playBtnText}>
           {isPlaying ? '⏸ Durdur' : '▶ Otomatik Oynat'}
         </Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };

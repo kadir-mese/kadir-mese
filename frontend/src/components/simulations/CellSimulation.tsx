@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView, Dimensions } from 'react-native';
 import Svg, { Circle, Ellipse, Rect, Line, Text as SvgText, G, Path } from 'react-native-svg';
 import { colors } from '../../utils/colors';
 
@@ -206,9 +206,9 @@ export const CellSimulation: React.FC<CellSimulationProps> = ({ cellType, zoom }
             <Text style={styles.infoTitle}>{selectedOrganelle.name_tr}</Text>
             <Text style={styles.infoDesc}>{selectedOrganelle.description}</Text>
           </View>
-          <TouchableOpacity onPress={() => setSelectedOrganelle(null)} style={styles.closeBtn}>
+          <Pressable onPress={() => setSelectedOrganelle(null)} style={styles.closeBtn}>
             <Text style={styles.closeBtnText}>×</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       )}
       

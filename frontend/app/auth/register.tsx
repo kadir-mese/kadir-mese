@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
@@ -65,9 +65,9 @@ export default function Register() {
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
+            <Pressable style={styles.backBtn} onPress={() => router.back()}>
               <Ionicons name="close" size={24} color={colors.text} />
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           {/* Content */}
@@ -125,13 +125,13 @@ export default function Register() {
                     secureTextEntry={!showPassword}
                     autoCapitalize="none"
                   />
-                  <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                  <Pressable onPress={() => setShowPassword(!showPassword)}>
                     <Ionicons
                       name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                       size={20}
                       color={colors.textMuted}
                     />
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
               </View>
 
@@ -151,7 +151,7 @@ export default function Register() {
                 </View>
               </View>
 
-              <TouchableOpacity
+              <Pressable
                 style={[styles.registerBtn, loading && styles.registerBtnDisabled]}
                 onPress={handleRegister}
                 disabled={loading}
@@ -161,15 +161,15 @@ export default function Register() {
                 ) : (
                   <Text style={styles.registerBtnText}>Kayıt Ol</Text>
                 )}
-              </TouchableOpacity>
+              </Pressable>
             </View>
 
             {/* Login link */}
             <View style={styles.footer}>
               <Text style={styles.footerText}>Zaten hesabın var mı? </Text>
-              <TouchableOpacity onPress={() => router.replace('/auth/login')}>
+              <Pressable onPress={() => router.replace('/auth/login')}>
                 <Text style={styles.footerLink}>Giriş yap</Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
         </ScrollView>

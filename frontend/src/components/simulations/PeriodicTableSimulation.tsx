@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView, Dimensions } from 'react-native';
 import Svg, { Rect, Text as SvgText, G } from 'react-native-svg';
 import { colors } from '../../utils/colors';
 
@@ -169,9 +169,9 @@ export const PeriodicTableSimulation: React.FC<PeriodicTableProps> = ({ view, hi
               <Text style={styles.nameEnText}>{selectedElement.name}</Text>
               <Text style={styles.massText}>Kütle: {selectedElement.mass.toFixed(3)}</Text>
             </View>
-            <TouchableOpacity onPress={() => setSelectedElement(null)} style={styles.closeBtn}>
+            <Pressable onPress={() => setSelectedElement(null)} style={styles.closeBtn}>
               <Text style={styles.closeBtnText}>×</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View style={styles.infoDetails}>
             {selectedElement.electronegativity && (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, RefreshControl } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -54,9 +54,9 @@ export default function Home() {
             <Text style={styles.greeting}>Merhaba{user ? `, ${user.name}` : ''} 👋</Text>
             <Text style={styles.subtitle}>Bugün ne öğrenmek istersin?</Text>
           </View>
-          <TouchableOpacity style={styles.notifBtn}>
+          <Pressable style={styles.notifBtn}>
             <Ionicons name="notifications-outline" size={24} color={colors.text} />
-          </TouchableOpacity>
+          </Pressable>
         </View>
 
         {/* Stats Card */}
@@ -93,34 +93,34 @@ export default function Home() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Hızlı Erişim</Text>
           <View style={styles.quickAccess}>
-            <TouchableOpacity
+            <Pressable
               style={[styles.quickItem, { backgroundColor: colors.physics + '20' }]}
               onPress={() => router.push('/(tabs)/subjects')}
             >
               <Ionicons name="planet-outline" size={28} color={colors.physics} />
               <Text style={[styles.quickLabel, { color: colors.physics }]}>Fizik</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[styles.quickItem, { backgroundColor: colors.biology + '20' }]}
               onPress={() => router.push('/(tabs)/subjects')}
             >
               <Ionicons name="leaf-outline" size={28} color={colors.biology} />
               <Text style={[styles.quickLabel, { color: colors.biology }]}>Biyoloji</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[styles.quickItem, { backgroundColor: colors.chemistry + '20' }]}
               onPress={() => router.push('/(tabs)/subjects')}
             >
               <Ionicons name="flask-outline" size={28} color={colors.chemistry} />
               <Text style={[styles.quickLabel, { color: colors.chemistry }]}>Kimya</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[styles.quickItem, { backgroundColor: colors.primary + '20' }]}
               onPress={() => router.push('/(tabs)/chat')}
             >
               <Ionicons name="chatbubbles-outline" size={28} color={colors.primary} />
               <Text style={[styles.quickLabel, { color: colors.primary }]}>AI</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
 
@@ -128,9 +128,9 @@ export default function Home() {
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Önerilen Simülasyonlar</Text>
-            <TouchableOpacity onPress={() => router.push('/(tabs)/subjects')}>
+            <Pressable onPress={() => router.push('/(tabs)/subjects')}>
               <Text style={styles.seeAll}>Tümünü Gör</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           {recentSimulations.map((sim) => (
             <SimulationCard

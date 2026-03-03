@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
@@ -143,9 +143,9 @@ export default function Chat() {
             </View>
           </View>
           {messages.length > 0 && (
-            <TouchableOpacity onPress={clearChat} style={styles.clearBtn}>
+            <Pressable onPress={clearChat} style={styles.clearBtn}>
               <Ionicons name="trash-outline" size={20} color={colors.error} />
-            </TouchableOpacity>
+            </Pressable>
           )}
         </View>
 
@@ -171,13 +171,13 @@ export default function Chat() {
                   'Mitoz bölünme nedir?',
                   'Periyodik tablo nasıl okunur?',
                 ].map((suggestion, i) => (
-                  <TouchableOpacity
+                  <Pressable
                     key={i}
                     style={styles.suggestionBtn}
                     onPress={() => setInput(suggestion)}
                   >
                     <Text style={styles.suggestionText}>{suggestion}</Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 ))}
               </View>
             </View>
@@ -231,7 +231,7 @@ export default function Chat() {
             multiline
             maxLength={1000}
           />
-          <TouchableOpacity
+          <Pressable
             style={[styles.sendBtn, (!input.trim() || loading) && styles.sendBtnDisabled]}
             onPress={sendMessage}
             disabled={!input.trim() || loading}
@@ -241,7 +241,7 @@ export default function Chat() {
               size={20}
               color={input.trim() && !loading ? colors.white : colors.textMuted}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>

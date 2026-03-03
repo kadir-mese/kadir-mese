@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
+  Pressable,
   ActivityIndicator,
   Alert,
 } from 'react-native';
@@ -211,9 +211,9 @@ export default function SimulationDetail() {
         <View style={styles.errorContainer}>
           <Ionicons name="alert-circle-outline" size={48} color={colors.error} />
           <Text style={styles.errorText}>Simülasyon bulunamadı</Text>
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Pressable style={styles.backButton} onPress={() => router.back()}>
             <Text style={styles.backButtonText}>Geri Dön</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </SafeAreaView>
     );
@@ -225,9 +225,9 @@ export default function SimulationDetail() {
     <SafeAreaView style={styles.container} edges={['top']}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
+        <Pressable style={styles.backBtn} onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color={colors.text} />
-        </TouchableOpacity>
+        </Pressable>
         <View style={styles.headerCenter}>
           <Text style={styles.headerTitle} numberOfLines={1}>{simulation.name_tr}</Text>
           <View style={[styles.subjectBadge, { backgroundColor: getSubjectColor() + '20' }]}>
@@ -262,7 +262,7 @@ export default function SimulationDetail() {
         </View>
 
         {/* Complete Button */}
-        <TouchableOpacity
+        <Pressable
           style={[styles.completeBtn, isCompleted && styles.completedBtn]}
           onPress={handleComplete}
         >
@@ -274,16 +274,16 @@ export default function SimulationDetail() {
           <Text style={styles.completeBtnText}>
             {isCompleted ? 'Tekrar Tamamla' : 'Tamamlandı Olarak İşaretle'}
           </Text>
-        </TouchableOpacity>
+        </Pressable>
 
         {/* AI Help */}
-        <TouchableOpacity
+        <Pressable
           style={styles.helpBtn}
           onPress={() => router.push('/(tabs)/chat')}
         >
           <Ionicons name="sparkles" size={20} color={colors.primary} />
           <Text style={styles.helpBtnText}>AI Asistandan Yardım Al</Text>
-        </TouchableOpacity>
+        </Pressable>
 
         <View style={{ height: 40 }} />
       </ScrollView>

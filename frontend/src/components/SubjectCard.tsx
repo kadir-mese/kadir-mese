@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../utils/colors';
 
@@ -30,10 +30,10 @@ const getIconName = (icon: string): keyof typeof Ionicons.glyphMap => {
 
 export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, progress = 0, onPress }) => {
   return (
-    <TouchableOpacity
+    <Pressable
       style={[styles.card, { borderLeftColor: subject.color }]}
       onPress={onPress}
-      activeOpacity={0.8}
+      
     >
       <View style={[styles.iconContainer, { backgroundColor: subject.color + '20' }]}>
         <Ionicons name={getIconName(subject.icon)} size={32} color={subject.color} />
@@ -46,7 +46,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, progress = 0,
         </View>
         <Text style={styles.progressText}>{progress}%</Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
