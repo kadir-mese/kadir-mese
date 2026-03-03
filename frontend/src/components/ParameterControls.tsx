@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Slider, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import Slider from '@react-native-community/slider';
 import { colors } from '../utils/colors';
 
 interface ParameterSliderProps {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import Svg, { Rect, Text as SvgText, G } from 'react-native-svg';
-import { colors } from '../utils/colors';
+import { colors } from '../../utils/colors';
 
 const { width } = Dimensions.get('window');
 const SVG_WIDTH = width - 32;
