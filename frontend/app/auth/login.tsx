@@ -51,7 +51,10 @@ export default function Login() {
       >
         {/* Header */}
         <View style={styles.header}>
-          <Pressable style={styles.backBtn} onPress={() => router.back()}>
+          <Pressable 
+            style={({ pressed }) => [styles.backBtn, pressed && styles.btnPressed]}
+            onPress={() => router.back()}
+          >
             <Ionicons name="close" size={24} color={colors.text} />
           </Pressable>
         </View>
@@ -96,7 +99,10 @@ export default function Login() {
                   secureTextEntry={!showPassword}
                   autoCapitalize="none"
                 />
-                <Pressable onPress={() => setShowPassword(!showPassword)}>
+                <Pressable 
+                  style={({ pressed }) => pressed && styles.btnPressed}
+                  onPress={() => setShowPassword(!showPassword)}
+                >
                   <Ionicons
                     name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                     size={20}
@@ -107,7 +113,11 @@ export default function Login() {
             </View>
 
             <Pressable
-              style={[styles.loginBtn, loading && styles.loginBtnDisabled]}
+              style={({ pressed }) => [
+                styles.loginBtn, 
+                loading && styles.loginBtnDisabled,
+                pressed && styles.btnPressed
+              ]}
               onPress={handleLogin}
               disabled={loading}
             >
@@ -122,7 +132,10 @@ export default function Login() {
           {/* Register link */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>Hesabın yok mu? </Text>
-            <Pressable onPress={() => router.replace('/auth/register')}>
+            <Pressable 
+              style={({ pressed }) => pressed && styles.linkPressed}
+              onPress={() => router.replace('/auth/register')}
+            >
               <Text style={styles.footerLink}>Kayıt ol</Text>
             </Pressable>
           </View>
@@ -151,6 +164,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer' as any,
+  },
+  btnPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.96 }],
+  },
+  linkPressed: {
+    opacity: 0.7,
   },
   content: {
     flex: 1,
@@ -210,6 +231,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 12,
+    cursor: 'pointer' as any,
   },
   loginBtnDisabled: {
     opacity: 0.7,
@@ -231,5 +253,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     color: colors.primary,
+    cursor: 'pointer' as any,
   },
 });

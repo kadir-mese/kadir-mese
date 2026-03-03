@@ -69,9 +69,10 @@ export const ParameterSelect: React.FC<ParameterSelectProps> = ({
         {options.map((opt) => (
           <Pressable
             key={opt.value}
-            style={[
+            style={({ pressed }) => [
               styles.option,
               value === opt.value && styles.optionActive,
+              pressed && styles.optionPressed
             ]}
             onPress={() => onChange(opt.value)}
           >
@@ -138,9 +139,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceLight,
     marginRight: 8,
     marginBottom: 8,
+    cursor: 'pointer' as any,
   },
   optionActive: {
     backgroundColor: colors.primary,
+  },
+  optionPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.96 }],
   },
   optionText: {
     fontSize: 13,

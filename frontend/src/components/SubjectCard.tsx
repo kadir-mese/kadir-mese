@@ -31,9 +31,12 @@ const getIconName = (icon: string): keyof typeof Ionicons.glyphMap => {
 export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, progress = 0, onPress }) => {
   return (
     <Pressable
-      style={[styles.card, { borderLeftColor: subject.color }]}
+      style={({ pressed }) => [
+        styles.card, 
+        { borderLeftColor: subject.color },
+        pressed && styles.cardPressed
+      ]}
       onPress={onPress}
-      
     >
       <View style={[styles.iconContainer, { backgroundColor: subject.color + '20' }]}>
         <Ionicons name={getIconName(subject.icon)} size={32} color={subject.color} />
@@ -58,6 +61,11 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 16,
     borderLeftWidth: 4,
+    cursor: 'pointer' as any,
+  },
+  cardPressed: {
+    opacity: 0.8,
+    transform: [{ scale: 0.98 }],
   },
   iconContainer: {
     width: 56,

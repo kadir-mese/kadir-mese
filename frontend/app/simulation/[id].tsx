@@ -7,6 +7,7 @@ import {
   Pressable,
   ActivityIndicator,
   Alert,
+  Platform,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -31,6 +32,7 @@ export default function SimulationDetail() {
   const [params, setParams] = useState<Record<string, any>>({});
   const [startTime] = useState(Date.now());
   const [isPlaying, setIsPlaying] = useState(false);
+  const [completing, setCompleting] = useState(false);
 
   useEffect(() => {
     fetchSimulation();
@@ -59,14 +61,19 @@ export default function SimulationDetail() {
     }
   };
 
+  const handleGoBack = () => {
+    router.back();
+  };
+
   const handleComplete = async () => {
     if (!user) {
       Alert.alert('Uyarı', 'İlerlemeyi kaydetmek için giriş yapmalısınız');
       return;
     }
 
+    setCompleting(true);
     const timeSpent = Math.round((Date.now() - startTime) / 1000);
-    const score = Math.min(100, Math.round(timeSpent / 10) + 50); // Simple scoring
+    const score = Math.min(100, Math.round(timeSpent / 10) + 50);
 
     try {
       await progressAPI.update(user.id, {
@@ -93,7 +100,13 @@ export default function SimulationDetail() {
     } catch (error) {
       console.error('Error saving progress:', error);
       Alert.alert('Hata', 'İlerleme kaydedilemedi');
+    } finally {
+      setCompleting(false);
     }
+  };
+
+  const handleAIHelp = () => {
+    router.push('/(tabs)/chat');
   };
 
   const renderSimulation = () => {
@@ -211,7 +224,10 @@ export default function SimulationDetail() {
         <View style={styles.errorContainer}>
           <Ionicons name="alert-circle-outline" size={48} color={colors.error} />
           <Text style={styles.errorText}>Simülasyon bulunamadı</Text>
-          <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Pressable 
+            style={({ pressed }) => [styles.backButton, pressed && styles.btnPressed]}
+            onPress={handleGoBack}
+          >
             <Text style={styles.backButtonText}>Geri Dön</Text>
           </Pressable>
         </View>
@@ -225,7 +241,10 @@ export default function SimulationDetail() {
     <SafeAreaView style={styles.container} edges={['top']}>
       {/* Header */}
       <View style={styles.header}>
-        <Pressable style={styles.backBtn} onPress={() => router.back()}>
+        <Pressable 
+          style={({ pressed }) => [styles.backBtn, pressed && styles.btnPressed]}
+          onPress={handleGoBack}
+        >
           <Ionicons name="arrow-back" size={24} color={colors.text} />
         </Pressable>
         <View style={styles.headerCenter}>
@@ -263,23 +282,34 @@ export default function SimulationDetail() {
 
         {/* Complete Button */}
         <Pressable
-          style={[styles.completeBtn, isCompleted && styles.completedBtn]}
+          style={({ pressed }) => [
+            styles.completeBtn, 
+            isCompleted && styles.completedBtn,
+            pressed && styles.btnPressed
+          ]}
           onPress={handleComplete}
+          disabled={completing}
         >
-          <Ionicons
-            name={isCompleted ? 'checkmark-circle' : 'flag'}
-            size={20}
-            color={colors.white}
-          />
-          <Text style={styles.completeBtnText}>
-            {isCompleted ? 'Tekrar Tamamla' : 'Tamamlandı Olarak İşaretle'}
-          </Text>
+          {completing ? (
+            <ActivityIndicator color={colors.white} size="small" />
+          ) : (
+            <>
+              <Ionicons
+                name={isCompleted ? 'checkmark-circle' : 'flag'}
+                size={20}
+                color={colors.white}
+              />
+              <Text style={styles.completeBtnText}>
+                {isCompleted ? 'Tekrar Tamamla' : 'Tamamlandı Olarak İşaretle'}
+              </Text>
+            </>
+          )}
         </Pressable>
 
         {/* AI Help */}
         <Pressable
-          style={styles.helpBtn}
-          onPress={() => router.push('/(tabs)/chat')}
+          style={({ pressed }) => [styles.helpBtn, pressed && styles.helpBtnPressed]}
+          onPress={handleAIHelp}
         >
           <Ionicons name="sparkles" size={20} color={colors.primary} />
           <Text style={styles.helpBtnText}>AI Asistandan Yardım Al</Text>
@@ -319,6 +349,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: 12,
+    cursor: 'pointer' as any,
   },
   backButtonText: {
     color: colors.white,
@@ -340,6 +371,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer' as any,
+  },
+  btnPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.96 }],
   },
   headerCenter: {
     flex: 1,
@@ -402,6 +438,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     paddingVertical: 16,
     marginTop: 20,
+    cursor: 'pointer' as any,
   },
   completedBtn: {
     backgroundColor: colors.primary,
@@ -420,6 +457,10 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     paddingVertical: 14,
     marginTop: 12,
+    cursor: 'pointer' as any,
+  },
+  helpBtnPressed: {
+    opacity: 0.7,
   },
   helpBtnText: {
     fontSize: 14,

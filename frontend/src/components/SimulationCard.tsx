@@ -46,9 +46,8 @@ const getTypeColor = (type: string) => {
 export const SimulationCard: React.FC<SimulationCardProps> = ({ simulation, completed, onPress }) => {
   return (
     <Pressable
-      style={styles.card}
+      style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
       onPress={onPress}
-      
     >
       <View style={styles.header}>
         <View style={[styles.typeIndicator, { backgroundColor: getTypeColor(simulation.type) }]} />
@@ -85,6 +84,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
+    cursor: 'pointer' as any,
+  },
+  cardPressed: {
+    opacity: 0.8,
+    transform: [{ scale: 0.98 }],
   },
   header: {
     flexDirection: 'row',

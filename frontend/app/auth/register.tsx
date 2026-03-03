@@ -65,7 +65,10 @@ export default function Register() {
         <ScrollView showsVerticalScrollIndicator={false}>
           {/* Header */}
           <View style={styles.header}>
-            <Pressable style={styles.backBtn} onPress={() => router.back()}>
+            <Pressable 
+              style={({ pressed }) => [styles.backBtn, pressed && styles.btnPressed]}
+              onPress={() => router.back()}
+            >
               <Ionicons name="close" size={24} color={colors.text} />
             </Pressable>
           </View>
@@ -125,7 +128,10 @@ export default function Register() {
                     secureTextEntry={!showPassword}
                     autoCapitalize="none"
                   />
-                  <Pressable onPress={() => setShowPassword(!showPassword)}>
+                  <Pressable 
+                    style={({ pressed }) => pressed && styles.btnPressed}
+                    onPress={() => setShowPassword(!showPassword)}
+                  >
                     <Ionicons
                       name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                       size={20}
@@ -152,7 +158,11 @@ export default function Register() {
               </View>
 
               <Pressable
-                style={[styles.registerBtn, loading && styles.registerBtnDisabled]}
+                style={({ pressed }) => [
+                  styles.registerBtn, 
+                  loading && styles.registerBtnDisabled,
+                  pressed && styles.btnPressed
+                ]}
                 onPress={handleRegister}
                 disabled={loading}
               >
@@ -167,7 +177,10 @@ export default function Register() {
             {/* Login link */}
             <View style={styles.footer}>
               <Text style={styles.footerText}>Zaten hesabın var mı? </Text>
-              <Pressable onPress={() => router.replace('/auth/login')}>
+              <Pressable 
+                style={({ pressed }) => pressed && styles.linkPressed}
+                onPress={() => router.replace('/auth/login')}
+              >
                 <Text style={styles.footerLink}>Giriş yap</Text>
               </Pressable>
             </View>
@@ -197,6 +210,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer' as any,
+  },
+  btnPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.96 }],
+  },
+  linkPressed: {
+    opacity: 0.7,
   },
   content: {
     flex: 1,
@@ -256,6 +277,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 12,
+    cursor: 'pointer' as any,
   },
   registerBtnDisabled: {
     opacity: 0.7,
@@ -278,5 +300,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600',
     color: colors.primary,
+    cursor: 'pointer' as any,
   },
 });
