@@ -45,7 +45,7 @@ Python, Selenium ve Pandas ile Trendyol ve Hepsiburada fiyat takibi. Proje kapsa
 
 <table width="100%"><tbody><tr><td>
 <strong>Lavinya Sesli Asistan · Voice Assistant</strong><br>
-Sesli komutla etkileşim için Python ve Tkinter kullanan masaüstü uygulaması. SpeechRecognition ile komutları dinliyor, gTTS ile yanıt veriyor ve not kaydediyor.<br><a href="https://github.com/kadir-mese/sesliasistanlavinya">Kaynak kodu</a>
+Sesli komutla etkileşim için Python ve Tkinter kullanan masaüstü uygulaması. SpeechRecognition ile komutları dinliyor, gTTS ile yanıt veriyor ve not kaydediyor.<br><a href="https://github.com/kadir-mese/lavinya-voice-assistant">Kaynak kodu</a>
 </td></tr></tbody></table>
 
 <table width="100%"><tbody><tr><td>
