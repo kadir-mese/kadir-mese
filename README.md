@@ -44,11 +44,6 @@ Python, Selenium ve Pandas ile Trendyol ve Hepsiburada fiyat takibi. Proje kapsa
 <summary>Diğer açık kaynak projeleri / More public projects</summary>
 
 <table width="100%"><tbody><tr><td>
-<strong>Eğitim Uygulaması · Learning App</strong><br>
-Ders konularına ve simülasyonlara erişim sağlayan bir eğitim uygulaması. Expo ve React Native arayüzü, FastAPI ve MongoDB kullanan backend ile çalışıyor. API, ilerleme takibi ve sohbet uç noktaları içeriyor.<br><a href="https://github.com/kadir-mese/kadir-mese/tree/main/frontend">Mobil kaynak kodu</a> · <a href="https://github.com/kadir-mese/kadir-mese/blob/main/backend/server.py">Backend kaynak kodu</a>
-</td></tr></tbody></table>
-
-<table width="100%"><tbody><tr><td>
 <strong>Lavinya Sesli Asistan · Voice Assistant</strong><br>
 Sesli komutla etkileşim için Python ve Tkinter kullanan masaüstü uygulaması. SpeechRecognition ile komutları dinliyor, gTTS ile yanıt veriyor ve not kaydediyor.<br><a href="https://github.com/kadir-mese/sesliasistanlavinya">Kaynak kodu</a>
 </td></tr></tbody></table>
