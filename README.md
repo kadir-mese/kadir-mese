@@ -32,7 +32,7 @@ Haar Cascade ile yüz tespiti ve LBPH ile yüz tanıma temelli personel giriş-�
 
 <table width="100%"><tbody><tr><td>
 <strong>YKS Tercih Asistanı</strong> · <em>Mobil geliştirme</em><br>
-React Native, Expo, SQLite ve Redux Toolkit tabanlı tercih asistanı. Veri entegrasyonu ÖSYM, YÖK Atlas ve Python veri işleme hattını kapsıyor. Proje kapsamında üniversite ve bölüm arama, başarı sırası, tercih risk analizi ve şehir profilleri yer alıyor.
+React Native, Expo, SQLite ve Redux Toolkit tabanlı tercih asistanı. Veri entegrasyonu ÖSYM, YÖK Atlas ve Python veri işleme hattını kapsıyor. Proje kapsamında üniversite ve bölüm arama, başarı sırası, tercih risk analizi ve şehir profilleri yer alıyor.<br><a href="https://github.com/kadir-mese/yks-preference-assistant">Kaynak kodu / Source code</a> · <em>Sentetik verili demo / Synthetic-data demo</em>
 </td></tr></tbody></table>
 
 <table width="100%"><tbody><tr><td>
